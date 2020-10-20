@@ -11,7 +11,7 @@ services:
           MARIADB_IMAGE: ${MARIADB_IMAGE}
       volumes:
         - mariadb:/var/lib/mysql
-        - ${MARIADB_ENTRYPOINT_INITDB}:/docker-entrypoint-initdb.d
+        - /srv/dev-disk-by-label-SeagateA/appdata/mariadb/docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d
       ports:
         - "${MARIADB_PORT}:3306"
       environment:
@@ -50,9 +50,10 @@ services:
         - DATABASE_PASSWORD=${SHINOBI_DB_PASSWORD}
         - DATABASE_PORT=${SHINOBI_DB_PORT}
       volumes:
-        - ${DATA_SAVE_PATH}/shinobi/config:/config
-        - ${DATA_SAVE_PATH}/shinobi/videos:/opt/shinobi/videos
-        - ${DATA_SAVE_PATH}/shinobi/datadir:/var/lib/mysql
+        - /srv/dev-disk-by-label-SeagateA/appdata/shinobi/config:/config
+        - /srv/dev-disk-by-label-WDGreen/webcam/videos:/opt/shinobi/videos
+        - /srv/dev-disk-by-label-SeagateA/appdata/shinobi/datadir:/var/lib/mysql
+        - /dev/shm/shinobiDockerTemp:/dev/shm/streams
       restart: unless-stopped
 
 
