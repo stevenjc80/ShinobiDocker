@@ -1,4 +1,4 @@
-version: '3.7'
+version: "3.0"
 
 services:
 
@@ -43,7 +43,7 @@ services:
       depends_on:
         - "mariadb"
       ports:
-        - "8080:8080"
+        - "8081:8080"
       environment:
         - DATABASE_HOST=mariadb
         - DATABASE_USER=${SHINOBI_DB_USER}
